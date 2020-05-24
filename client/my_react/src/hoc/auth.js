@@ -13,9 +13,7 @@ export default function (SpecificComponent, option, adminRoute = null){
         const dispatch = useDispatch();
 
         useEffect(() => {
-            
-            dispatch(auth()).then(response => {
-                
+            dispatch(auth()).then(response => {                
                 //로그인하지 않은 상태
                 if(!response.payload.isAuth) {
                     if(option){
@@ -26,12 +24,11 @@ export default function (SpecificComponent, option, adminRoute = null){
 
                 //로그인한 상태                    
                 } else {
-
                     if(adminRoute && !response.payload.isAdmin){
                         props.history.push('/');
                     } else {
-
-                        if(!option){
+                        //!option만 하면 false, null 둘다 먹힘
+                        if(!option && option != null){
                             props.history.push('/');
                         } 
 

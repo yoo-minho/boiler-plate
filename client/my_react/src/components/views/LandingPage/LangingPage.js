@@ -43,15 +43,19 @@ function LangingPage(props) {
 
         var creatDttm = video.createdAt == undefined ? "" : video.createdAt.substr(0,10);
 
+        var videoThumbnail = video.thumbnail == undefined ? "" : `http://${window.location.hostname}:5000/${video.thumbnail}`;
+
         return <Col lg={6} md={8} xs={24} key={index}>
-            <a href={`/video/post/${video._id}`}>
-                <div style={{position:'relative'}}>
-                    <img style={{width:'100%'}} src={`http://${window.location.hostname}:5000/${video.thumbnail}`} alt="thumnail"></img>
-                    <div className="duration">
-                        <span>{minutes} : {seconds}</span>
-                    </div>
+            
+            <div style={{position:'relative'}}>
+                <a href={`/video/post/${video._id}`}>
+                <img style={{width:'100%'}} src={videoThumbnail} alt="thumnail"></img>
+                <div className="duration">
+                    <span>{minutes} : {seconds}</span>
                 </div>
-            </a>
+                </a>
+            </div>
+            
             <br />
             <Meta 
                 avatar = {
