@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Typography, Button, Form, Input } from 'antd'
 import { Icon } from '@ant-design/compatible'
 import Dropzone from 'react-dropzone'
+import Axios from 'axios'
+import { useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -18,12 +21,18 @@ const CategoryOptions = [
     {value: 3, label : "Pets"}
 ]
 
-function VideoUploadPage() {
+function VideoUploadPage(props) {
 
+    const user = useSelector(state => state.user);
     const [VideoTitle, setVideoTitle] = useState("");
     const [Description, setDescription] = useState("");
     const [Private, setPrivate] = useState(0);
     const [Category, setCategory] = useState("Film & Animation");
+    const [FilePath, setFilePath] = useState("");
+    const [Duration, setDuration] = useState("");
+    const [ThumbnailFilePath, setThumbnailFilePath] = useState("")
+
+    const url = window.location.hostname;
 
     const onTitleChange = (e) => {
         setVideoTitle(e.currentTarget.value);
@@ -43,7 +52,7 @@ function VideoUploadPage() {
 
     const onDrop = (files) => {
 
-        let formData = new FormData;
+        let formData = new FormData();
         const config = {
             header : {'content-type':'multipart/form-data'}
         }
@@ -52,11 +61,66 @@ function VideoUploadPage() {
         Axios.post('/api/video/uploadfiles', formData, config)
         .then(response => {
                 if(response.data.success){
+                    console.log(response.data);
+
+                    let variable = {
+                        url:response.data.url,
+                        fileName:response.data.fileName
+                    }
+
+                    setFilePath(response.data.url);
+
+                    Axios.post('/api/video/thumbnail', variable)
+                    .then(response => {
+                        if(response.data.success){
+                            
+                            setDuration(response.data.fileDuration);
+                            setThumbnailFilePath(response.data.url);
+
+                        } else {
+                            alert('썸네일 생성 실패 ')
+                        }
+                    })
+
 
                 } else {
                     alert('실패');
                 }
         })
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const variables = {
+            writer : user.userData._id,
+            title : VideoTitle,
+            description : Description,
+            privacy : Private,
+            filePath : FilePath,
+            category : Category,
+            duration : Duration,
+            thumbnail : ThumbnailFilePath
+        }
+
+        Axios.post('/api/video/uploadvideo', variables)
+        .then(response => {
+            if(response.data.success) {
+
+                alert('성공적으로 업로드를 했습니다.');
+
+                props.history.push('/');
+
+                setTimeout(()=> {
+                    
+                }, 3000)
+
+            } else {
+                alert('비디오 업로드 실패');
+            }
+        })
+
+
     }
 
     return (
@@ -65,7 +129,7 @@ function VideoUploadPage() {
                 <Title level={2}>Upload Video</Title>
             </div>
 
-            <Form onSubmit>
+            <Form onSubmit = {onSubmit}>
                 <div style={{ display:'flex', justifyContent:'space-between'}}>
                     <Dropzone
                     onDrop={onDrop}
@@ -80,8 +144,11 @@ function VideoUploadPage() {
                         </div>
                     )}
                     </Dropzone>
-                    <div><img src alt></img></div>
-                
+                    {ThumbnailFilePath &&
+                        <div>
+                            <img src={`http://${url}:5000/${ThumbnailFilePath}`} alt="thumbnail"></img>
+                         </div>
+                    }
                 </div>
 
                 <br/>
@@ -119,7 +186,7 @@ function VideoUploadPage() {
                 <br/>
                 <br/>
 
-                <Button type="primary" size="large" onClick>
+                <Button type="primary" size="large" onClick={onSubmit}>
                     Submit
                 </Button> 
             
@@ -129,4 +196,4 @@ function VideoUploadPage() {
     )
 }
 
-export default VideoUploadPage
+export default withRouter(VideoUploadPage)
