@@ -7,7 +7,6 @@ import Subscriber from './Sections/Subscriber'
 
 function VideoDetailPage(props) {
 
-    
     const [VideoDetail, setVideoDetail] = useState({})
 
     useEffect(() => {
@@ -32,13 +31,15 @@ function VideoDetailPage(props) {
         var videoFilePath = VideoDetail.filePath === undefined ? "" : `http://${window.location.hostname}:5000/${VideoDetail.filePath}`;
         var videoWriter = VideoDetail.writer;
 
+        const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && <Subscriber userTo={VideoDetail.writer._id} />
+
         return (
             <Row gutter={[16, 16]}>
                 <Col lg={18} xs={24}>
                     <div style={{width:'100%', padding:'3rem 4rem'}}>
                         <video style={{width:'100%'}} src={videoFilePath} controls />
                         <List.Item
-                            actions={[<Subscriber userTo={VideoDetail.writer._id} />]}
+                            actions={[subscribeButton]}
                         >
                             <List.Item.Meta
                                 avatar={<Avatar src={videoWriter.image} />}

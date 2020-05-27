@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import { Card, Avatar, Col, Typography, Row} from 'antd'
+import NavBar from '../NavBar/NavBar'
 
 const { Title } = Typography;
 const { Meta } = Card;
@@ -71,9 +72,9 @@ function LangingPage(props) {
     })
 
     return (
-        <div style = {{ width : '85%', margin: '3rem auto'}}>
-            <Title level={2} >Recommend</Title>
-            <hr />
+        <NavBar content={
+            <div style = {{ width : '85%', margin: '2vh'}}>
+
             <Row gutter = {[32, 16]}>
                 {renderCards}
             </Row>
@@ -89,6 +90,7 @@ function LangingPage(props) {
                 </button>
             </div>
         </div>
+        }></NavBar>
     )
 }
 
