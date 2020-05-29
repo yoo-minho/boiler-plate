@@ -1,2 +1,5 @@
 node_modules
 dev.js
+upload_files/
+nohup.out
+settings.json

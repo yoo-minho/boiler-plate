@@ -1,9 +1,14 @@
 # boiler-plate
 
-1. var, let, const 차이?
-2. res.json()과 res.send()의 차이?
-3. ERR_HTTP_HEADERS_SENT 에러 조심!
-4. express는 꼭 db 연결할때 쓰는 것은 아니구나
-5. const 받을때 그냥 받는거랑 {} 하고 받는것의 차이
-6. 어쩔때 arrow 쓰고 어쩔때 function 쓰는지의 차이
-7. echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p 이슈
+1. bcrypt 이슈
+- npm install --global windows-build-tools
+- npm i -g node-pre-gyp
+- npm i bcrypt@3.0.6
+
+2. ffmpeg 이슈
+- https://kyoko0825.tistory.com/entry/%EC%9C%88%EB%8F%84%EC%9A%B0-10%EC%97%90%EC%84%9C-ffmpeg-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+
+3. nohup node.js
+- nohup node server.js &
+- rm -rf nohup.out
+- tail -1000f nohup.out

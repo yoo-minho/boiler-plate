@@ -1,7 +1,7 @@
 {
   "name": "boiler-plate",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. var, let, const 차이?\r 2. res.json()과 res.send()의 차이?\r 3. ERR_HTTP_HEADERS_SENT 에러 조심!\r 4. express는 꼭 db 연결할때 쓰는 것은 아니구나\r 5. const 받을때 그냥 받는거랑 {} 하고 받는것의 차이\r 6. 어쩔때 arrow 쓰고 어쩔때 function 쓰는지의 차이\r 7. echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p 이슈",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -12,7 +12,7 @@
   "author": "uminoh",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "concurrently": "^5.2.0",
     "cookie-parser": "^1.4.5",
@@ -23,5 +23,13 @@
     "mongoose": "^5.9.11",
     "multer": "^1.4.2",
     "nodemon": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoo-minho/boiler-plate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yoo-minho/boiler-plate/issues"
+  },
+  "homepage": "https://github.com/yoo-minho/boiler-plate#readme"
 }
