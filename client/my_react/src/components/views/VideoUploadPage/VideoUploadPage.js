@@ -32,8 +32,6 @@ function VideoUploadPage(props) {
     const [Duration, setDuration] = useState("");
     const [ThumbnailFilePath, setThumbnailFilePath] = useState("")
 
-    const url = window.location.hostname;
-
     const onTitleChange = (e) => {
         setVideoTitle(e.currentTarget.value);
     }
@@ -146,7 +144,7 @@ function VideoUploadPage(props) {
                     </Dropzone>
                     {ThumbnailFilePath &&
                         <div>
-                            <img src={`http://${url}:5000/${ThumbnailFilePath}`} alt="thumbnail"></img>
+                            <img src={`http://localhost:3000/${ThumbnailFilePath}`} alt="thumbnail"></img>
                          </div>
                     }
                 </div>

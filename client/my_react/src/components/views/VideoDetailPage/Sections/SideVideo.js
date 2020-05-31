@@ -10,7 +10,6 @@ function SideVideo() {
         axios.get('/api/video/getVideos')
         .then(response => {
             if(response.data.success){
-                console.log(response.data.videos)
                 setsideVideos(response.data.videos);
             } else {
                 alert('못가져옴');
@@ -26,7 +25,7 @@ function SideVideo() {
 
             var minutes = Math.floor(video.duration / 60);
             var seconds = Math.floor((video.duration - minutes * 60));
-            var videoThumb = video.thumbnail === undefined ? "" : `http://${window.location.hostname}:5000/${video.thumbnail}`;
+            var videoThumb = video.thumbnail === undefined ? "" : `http://localhost:3000/${video.thumbnail}`;
             
             return (
                 <div key={index} style={{ display:'flex', marginBottom:'1rem', padding: '0 2rem'}}>

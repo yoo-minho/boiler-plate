@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
-import { Card, Avatar, Col, Typography, Row} from 'antd'
+import { Card, Avatar, Col, Row} from 'antd'
 import NavBar from '../NavBar/NavBar'
 
-const { Title } = Typography;
 const { Meta } = Card;
 
 function LangingPage(props) {
@@ -43,7 +42,7 @@ function LangingPage(props) {
 
         var creatDttm = video.createdAt === undefined ? "" : video.createdAt.substr(0,10);
 
-        var videoThumbnail = video.thumbnail === undefined ? "" : `http://${window.location.hostname}:5000/${video.thumbnail}`;
+        var videoThumbnail = video.thumbnail === undefined ? "" : `http://localhost:3000/${video.thumbnail}`;
 
         return <Col lg={6} md={8} xs={24} key={index}>
             

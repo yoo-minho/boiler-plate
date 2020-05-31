@@ -1,17 +1,13 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb, Typography } from 'antd';
+import { Layout, Menu, Typography } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
 } from '@ant-design/icons';
 import logo from '../../../img/pngguru.com.png'
 
 const { Title } = Typography;
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
 
 function NavBar(props) {
 
@@ -28,7 +24,7 @@ function NavBar(props) {
 
     const pathName = window.location.pathname.replace("/","");
 
-    const headerTitle = pathName == "" ? "Home" : pathName;
+    const headerTitle = pathName === "" ? "Home" : pathName;
       
 
     return (

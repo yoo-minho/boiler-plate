@@ -4,21 +4,31 @@ import Axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import SideVideo from './Sections/SideVideo'
 import Subscriber from './Sections/Subscriber'
+import Comment from './Sections/Comment'
 
 function VideoDetailPage(props) {
 
     const [VideoDetail, setVideoDetail] = useState({})
+    const [Comments, setComments] = useState([])
+
+    const videoId = props.match.params.videoId;
+    const variable = {videoId : videoId}
 
     useEffect(() => {
 
-        const videoId = props.match.params.videoId;
-        const variable = {videoId : videoId}
-        
         Axios.post('/api/video/getVideoDetail', variable)
         .then(response => {
             if(response.data.success){
-                console.log(response.data.videoDetail)
                 setVideoDetail(response.data.videoDetail);
+            } else {
+                alert('음슴')
+            }
+        })
+
+        Axios.post('/api/comment/getComments', variable)
+        .then(response => {
+            if(response.data.success){
+                setComments(response.data.result);
             } else {
                 alert('음슴')
             }
@@ -26,9 +36,16 @@ function VideoDetailPage(props) {
 
     }, [])
 
-    if(VideoDetail && VideoDetail.writer){
+    console.log("VideoDetail : " + JSON.stringify(VideoDetail).length);
+    console.log("Comments : " + JSON.stringify(Comments).length);
 
-        var videoFilePath = VideoDetail.filePath === undefined ? "" : `http://${window.location.hostname}:5000/${VideoDetail.filePath}`;
+    const refreshFuncion = (newComment) => {
+        setComments(newComment.concat(Comments));
+    }
+
+    if(VideoDetail && VideoDetail.writer && Comments){
+
+        var videoFilePath = VideoDetail.filePath === undefined ? "" : `http://localhost:3000/${VideoDetail.filePath}`;
         var videoWriter = VideoDetail.writer;
 
         const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && <Subscriber userTo={VideoDetail.writer._id} />
@@ -48,7 +65,8 @@ function VideoDetailPage(props) {
                             />
     
                         </List.Item>
-                        {/*comments*/}
+                        
+                        <Comment postId={videoId} commentList={Comments} refreshFuncion ={refreshFuncion} />
                     </div>
     
                 </Col>
