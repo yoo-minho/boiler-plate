@@ -28,12 +28,16 @@ function LangingPage(props) {
             if(response.data.success){
                 console.log(response.data.videos)
                 setVideo(response.data.videos);
+                console.log(Video)
             } else {
                 alert('못가져옴');
             }
         })
 
     }, [])
+
+    console.log("11")
+    console.log(Video)
 
     const renderCards = Video.map((video, index) => {
 

@@ -13,6 +13,7 @@ import VideoDetailPage from './components/views/VideoDetailPage/VideoDetailPage'
 import SubscriptionPage from './components/views/SubscriptionPage/SubscriptionPage'
 
 import MoviePage from './components/views/MoviePage/MoviePage'
+import MovieDetail from './components/views/MovieDetail/MovieDetail'
 
 import Auth from './hoc/auth'
 
@@ -21,14 +22,19 @@ function App() {
     <Router>
       <div>
         <Switch>
+
           <Route exact path="/" component={Auth(LandingPage, null)}/>
+
           <Route exact path="/login" component={Auth(LoginPage, false)}/>
           <Route exact path="/register" component={Auth(RegisterPage, false)}/>
+          
           <Route exact path="/video/upload" component={Auth(VideoUploadPage, true)}/>
           <Route exact path="/video/post/:videoId" component={Auth(VideoDetailPage, null)}/>
           <Route exact path="/subscription" component={Auth(SubscriptionPage, null)}/>
+
           <Route exact path="/movie" component={Auth(MoviePage, null)}/>        
-          
+          <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)}/>
+
         </Switch>
       </div>
     </Router>
