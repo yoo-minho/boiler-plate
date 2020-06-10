@@ -16,6 +16,7 @@ import MoviePage from './components/views/MoviePage/MoviePage'
 import MovieDetail from './components/views/MovieDetail/MovieDetail'
 
 import Auth from './hoc/auth'
+import FavoritePage from './components/views/FavoritePage/FavoritePage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
 
           <Route exact path="/movie" component={Auth(MoviePage, null)}/>        
           <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)}/>
+          <Route exact path="/favorite" component={Auth(FavoritePage, null)}/>
 
         </Switch>
       </div>
