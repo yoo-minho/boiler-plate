@@ -18,6 +18,7 @@ import MovieDetail from './components/views/MovieDetail/MovieDetail'
 import Auth from './hoc/auth'
 import FavoritePage from './components/views/FavoritePage/FavoritePage';
 
+
 function App() {
   return (
     <Router>
