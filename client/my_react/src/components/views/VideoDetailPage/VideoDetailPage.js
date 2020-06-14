@@ -6,6 +6,7 @@ import SideVideo from './Sections/SideVideo'
 import Subscriber from './Sections/Subscriber'
 import Comment from './Sections/Comment'
 import LikeDislikes from './Sections/LikeDislikes'
+import NavBar from '../NavBar/NavBar'
 
 function VideoDetailPage(props) {
 
@@ -52,38 +53,42 @@ function VideoDetailPage(props) {
         const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && <Subscriber userTo={VideoDetail.writer._id} />
 
         return (
-            <Row gutter={[16, 16]}>
-                <Col lg={18} xs={24}>
-                    <div style={{width:'100%', padding:'3rem 4rem'}}>
-                        <video style={{width:'100%'}} src={videoFilePath} controls />
-                        <List.Item
-                            actions={[<LikeDislikes 
-                                            video 
-                                            userId={localStorage.getItem('userId')}
-                                            videoId={props.match.params.videoId} 
-                                        />,
-                                        subscribeButton]}
-                        >
-                            <List.Item.Meta
-                                avatar={<Avatar src={videoWriter.image} />}
-                                title={videoWriter.name}
-                                description={VideoDetail.description}
-                            />
-    
-                        </List.Item>
-                        
-                        <Comment postId={videoId} commentList={Comments} refreshFuncion ={refreshFuncion} />
-                    </div>
-    
-                </Col>
-                <Col lg={6} xs={24}>
-                    <SideVideo />
-                </Col>
-            </Row>
+            <NavBar content={
+                <Row gutter={[16, 16]}>
+                    <Col lg={18} xs={24}>
+                        <div style={{width:'100%', padding:'3rem 4rem'}}>
+                            <video style={{width:'100%'}} src={videoFilePath} controls />
+                            <List.Item
+                                actions={[<LikeDislikes 
+                                                video 
+                                                userId={localStorage.getItem('userId')}
+                                                videoId={props.match.params.videoId} 
+                                            />,
+                                            subscribeButton]}
+                            >
+                                <List.Item.Meta
+                                    avatar={<Avatar src={videoWriter.image} />}
+                                    title={videoWriter.name}
+                                    description={VideoDetail.description}
+                                />
+        
+                            </List.Item>
+                            
+                            <Comment postId={videoId} commentList={Comments} refreshFuncion ={refreshFuncion} />
+                        </div>
+        
+                    </Col>
+                    <Col lg={6} xs={24}>
+                        <SideVideo />
+                    </Col>
+                </Row>
+            }></NavBar>
         )
     } else {
         return (
-            <div>로딩중</div>
+            <NavBar content={
+                <div>로딩중</div>
+            }></NavBar>
         )
     }
     

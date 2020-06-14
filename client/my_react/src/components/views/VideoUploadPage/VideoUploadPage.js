@@ -5,6 +5,7 @@ import Dropzone from 'react-dropzone'
 import Axios from 'axios'
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom'
+import NavBar from '../NavBar/NavBar'
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -122,75 +123,77 @@ function VideoUploadPage(props) {
     }
 
     return (
-        <div style={{maxWidth:'700px', margin:'2rem auto'}}>
-            <div style = {{ textAlign:'center', marginBottom:'2rem'}}>
-                <Title level={2}>Upload Video</Title>
-            </div>
-
-            <Form onSubmit = {onSubmit}>
-                <div style={{ display:'flex', justifyContent:'space-between'}}>
-                    <Dropzone
-                    onDrop={onDrop}
-                    multiple={false}
-                    maxSize={100000000}>
-                    {({getRootProps, getInputProps}) => (
-                        <div style={{ width: '300px', height: '240px', 
-                            border:'1px solid lightgray', display:'flex',
-                            alignItems:'center', justifyContent:'center'}} {...getRootProps()}>
-                            <input {...getInputProps()}/>
-                            <Icon type="plus" style={{fontSize:'3rem'}}/>
-                        </div>
-                    )}
-                    </Dropzone>
-                    {ThumbnailFilePath &&
-                        <div>
-                            <img src={`http://localhost:3000/${ThumbnailFilePath}`} alt="thumbnail"></img>
-                         </div>
-                    }
+        <NavBar content={       
+            <div style={{maxWidth:'700px', margin:'2rem auto'}}>
+                <div style = {{ textAlign:'center', marginBottom:'2rem'}}>
+                    <Title level={2}>Upload Video</Title>
                 </div>
 
-                <br/>
-                <br/>
-                <label>Title</label>
-                <Input
-                    onChange = {onTitleChange}
-                    value = {VideoTitle}
-                />
-                <br/>
-                <br/>
-                <label>Descripti on</label>
-                <TextArea
-                    onChange = {onDescriptionChange}
-                    value = {Description}
-                />
-                <br/>
-                <br/>
+                <Form onSubmit = {onSubmit}>
+                    <div style={{ display:'flex', justifyContent:'space-between'}}>
+                        <Dropzone
+                        onDrop={onDrop}
+                        multiple={false}
+                        maxSize={100000000}>
+                        {({getRootProps, getInputProps}) => (
+                            <div style={{ width: '300px', height: '240px', 
+                                border:'1px solid lightgray', display:'flex',
+                                alignItems:'center', justifyContent:'center'}} {...getRootProps()}>
+                                <input {...getInputProps()}/>
+                                <Icon type="plus" style={{fontSize:'3rem'}}/>
+                            </div>
+                        )}
+                        </Dropzone>
+                        {ThumbnailFilePath &&
+                            <div>
+                                <img src={`http://localhost:3000/${ThumbnailFilePath}`} alt="thumbnail"></img>
+                            </div>
+                        }
+                    </div>
 
-                <select onChange={onPrivateChange}>
-                    {PrivateOptions.map((item, index) => (
-                        <option key={index} value={item.value}>{item.label}</option>
-                    ))}
-                </select>
+                    <br/>
+                    <br/>
+                    <label>Title</label>
+                    <Input
+                        onChange = {onTitleChange}
+                        value = {VideoTitle}
+                    />
+                    <br/>
+                    <br/>
+                    <label>Descripti on</label>
+                    <TextArea
+                        onChange = {onDescriptionChange}
+                        value = {Description}
+                    />
+                    <br/>
+                    <br/>
 
-                <br/>
-                <br/>
-
-                <select onChange={onCategoryChange}>
-                    {CategoryOptions.map((item, index) => (
+                    <select onChange={onPrivateChange}>
+                        {PrivateOptions.map((item, index) => (
                             <option key={index} value={item.value}>{item.label}</option>
-                    ))}
-                </select>
+                        ))}
+                    </select>
 
-                <br/>
-                <br/>
+                    <br/>
+                    <br/>
 
-                <Button type="primary" size="large" onClick={onSubmit}>
-                    Submit
-                </Button> 
-            
-            </Form>
-            
-        </div>
+                    <select onChange={onCategoryChange}>
+                        {CategoryOptions.map((item, index) => (
+                                <option key={index} value={item.value}>{item.label}</option>
+                        ))}
+                    </select>
+
+                    <br/>
+                    <br/>
+
+                    <Button type="primary" size="large" onClick={onSubmit}>
+                        Submit
+                    </Button> 
+                
+                </Form>
+                
+            </div>
+        }></NavBar>
     )
 }
 

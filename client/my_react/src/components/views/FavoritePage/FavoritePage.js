@@ -3,6 +3,7 @@ import './favorite.css'
 import Axios from 'axios'
 import {Popover} from 'antd'
 import {IMG_BASE_URL} from '../../../Config'
+import NavBar from '../NavBar/NavBar'
 
 function FavoritePage() {
 
@@ -66,23 +67,25 @@ function FavoritePage() {
     })
 
     return (
-        <div style={{width:'85%', margin:'3rem auto'}}>
-            <h2> Favorite Movies </h2>
-            <hr />
+        <NavBar content={  
+            <div style={{width:'85%', margin:'3rem auto'}}>
+                <h2> Favorite Movies </h2>
+                <hr />
 
-            <table>
-                <thread>
-                    <tr>        
-                        <th>Movie Title</th>
-                        <th>Movie Runtime</th>
-                        <th>Remove from favorites</th>
-                    </tr>
-                </thread>
-                <tbody>
-                    {renderCards}
-                </tbody>
-            </table>
-        </div>
+                <table>
+                    <thread>
+                        <tr>        
+                            <th>Movie Title</th>
+                            <th>Movie Runtime</th>
+                            <th>Remove from favorites</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        {renderCards}
+                    </tbody>
+                </table>
+            </div>
+        }></NavBar>
     )
 }
 

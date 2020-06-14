@@ -6,6 +6,7 @@ import GridCards from '../commons/GridCards'
 import { Row } from 'antd'
 import MovieInfo from './Sections/MovieInfo'
 import Favorite from './Sections/Favorite'
+import NavBar from '../NavBar/NavBar'
 
 function MovieDetail(props) {
 
@@ -39,61 +40,63 @@ function MovieDetail(props) {
     }
 
     return (
-        <div>
-            
-            {/*Header*/}
+        <NavBar content={
+            <div>
+                
+                {/*Header*/}
 
-            {/*메인이미지*/
-            Movie &&            
-            <MainImage 
-                image={`${IMG_BASE_URL}w1280/${Movie.backdrop_path}`}
-                title={Movie.original_title}
-                text={Movie.overview}
-            />
-            }
-
-            {/*Body*/}
-
-            <div style={{width:'85%', margin:'1rem auto'}}>
-
-                <div style = {{display:'flex', justifyContent:'flex-end'}}>
-                    <Favorite 
-                        movieInfo={Movie} 
-                        movieId={movieId}  
-                        userFrom={localStorage.getItem('userId')}
-                    />
-                </div>
-
-                {/* 무비인포 */}
-                {Movie && <MovieInfo movie={Movie} />}
-
-                <br/>
-
-                {/*액션가이드*/}
-
-                <div style={{display:'flex', justifyContent:'center', margin:'2rem'}}>
-                    <button onClick={toggleActorView}>Toggle Actor View</button>
-                </div>
-
-                {ActorToggle &&
-                <Row gutter={[16,16]}>
-                    {/*무비그리드*/
-                    Casts && Casts.map((cast, index) => (
-                        <React.Fragment key={index}>
-                            <GridCards
-                                image={cast.profile_path ? `${IMG_BASE_URL}w500/${cast.profile_path}` : null}
-                                characterName={cast.name}
-                            />
-                        </React.Fragment>
-                    ))}
-                </Row>
+                {/*메인이미지*/
+                Movie &&            
+                <MainImage 
+                    image={`${IMG_BASE_URL}w1280/${Movie.backdrop_path}`}
+                    title={Movie.original_title}
+                    text={Movie.overview}
+                />
                 }
 
+                {/*Body*/}
+
+                <div style={{width:'85%', margin:'1rem auto'}}>
+
+                    <div style = {{display:'flex', justifyContent:'flex-end'}}>
+                        <Favorite 
+                            movieInfo={Movie} 
+                            movieId={movieId}  
+                            userFrom={localStorage.getItem('userId')}
+                        />
+                    </div>
+
+                    {/* 무비인포 */}
+                    {Movie && <MovieInfo movie={Movie} />}
+
+                    <br/>
+
+                    {/*액션가이드*/}
+
+                    <div style={{display:'flex', justifyContent:'center', margin:'2rem'}}>
+                        <button onClick={toggleActorView}>Toggle Actor View</button>
+                    </div>
+
+                    {ActorToggle &&
+                    <Row gutter={[16,16]}>
+                        {/*무비그리드*/
+                        Casts && Casts.map((cast, index) => (
+                            <React.Fragment key={index}>
+                                <GridCards
+                                    image={cast.profile_path ? `${IMG_BASE_URL}w500/${cast.profile_path}` : null}
+                                    characterName={cast.name}
+                                />
+                            </React.Fragment>
+                        ))}
+                    </Row>
+                    }
+
+                </div>
+
+
+
             </div>
-
-
-
-        </div>
+        }></NavBar>
     )
 }
 
