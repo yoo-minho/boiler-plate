@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import LandingPage from './components/views/LandingPage/LangingPage'
+import ReadmePage from './components/views/ReadmePage/ReadmePage'
 import LoginPage from './components/views/LoginPage/LoginPage'
 import RegisterPage from './components/views/RegisterPage/RegisterPage'
 import VideoUploadPage from './components/views/VideoUploadPage/VideoUploadPage'
@@ -26,6 +27,8 @@ function App() {
         <Switch>
 
           <Route exact path="/" component={Auth(LandingPage, null)}/>
+
+          <Route exact path="/readme" component={Auth(ReadmePage, null)}/>
 
           <Route exact path="/login" component={Auth(LoginPage, false)}/>
           <Route exact path="/register" component={Auth(RegisterPage, false)}/>

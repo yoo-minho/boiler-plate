@@ -73,13 +73,13 @@ function FavoritePage() {
                 <hr />
 
                 <table>
-                    <thread>
+                    <thead>
                         <tr>        
                             <th>Movie Title</th>
                             <th>Movie Runtime</th>
                             <th>Remove from favorites</th>
                         </tr>
-                    </thread>
+                    </thead>
                     <tbody>
                         {renderCards}
                     </tbody>

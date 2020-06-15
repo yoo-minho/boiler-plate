@@ -1,12 +1,20 @@
-#logo {
-    line-height: 64px;
-    padding-left: 20px;
-    color: rgba(256,256,256,.85);
+.logo {
+    height: 48px;
+    background: url('https://flow.team//img_rn/memb2/bi_flow.png') no-repeat;
+    margin: 16px;
 }
 
-#logo img {
-    position: relative;
-    top: -1.5px;
-    height: 32px;
-    margin-right: 16px;
+.login-group{
+    padding: 16px;
 }
+
+.login{
+    float: right;
+}
+
+.signin{
+    float: right; 
+    margin-left: 16px;
+}
+
+
