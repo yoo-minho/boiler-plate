@@ -69,7 +69,7 @@ function NavBar(props) {
               <div className="logo" />
               <Menu
                 defaultSelectedKeys={localStorage.getItem('menuKey') ? localStorage.getItem('menuKey') : '1'}
-                defaultOpenKeys={localStorage.getItem('defaultOpenKeys').split(',')}
+                defaultOpenKeys={localStorage.getItem('defaultOpenKeys') ? localStorage.getItem('defaultOpenKeys').split(',') : ''}
                 mode='inline'
                 theme='light'
               >
@@ -82,6 +82,9 @@ function NavBar(props) {
                 <SubMenu key="sub2" icon={<VideoCameraOutlined />} title="영화조회서비스">
                   <Menu.Item key="4" link="/movie" onClick={menuClick} title="홈">홈</Menu.Item>
                   <Menu.Item key="5" link="/favorite" onClick={menuClick}>즐겨찾기</Menu.Item>
+                </SubMenu>
+                <SubMenu key="sub3" icon={<VideoCameraOutlined />} title="채팅서비스">
+                  <Menu.Item key="6" link="/chat" onClick={menuClick} title="홈">홈</Menu.Item>
                 </SubMenu>
               </Menu>
             </Sider>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link href="static/chat.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div id="contentWrap">
+        <nav>
+        <span id="nav-header">
+                chat App
+            </span>
+            <span id="logoutBtn">로그아웃</span>
+        </nav>
+        <div id="contentCover">
+            <div id="roomWrap">
+                <div id="roomList">
+                    <div id="roomHeader">채팅 방 목록</div>
+                    <div id="roomSelect">
+                        <div class="roomEl active" data-id="1">Everyone</div>
+                        <div class="roomEl" data-id="2">VueJS</div>
+                        <div class="roomEl" data-id="3">ReactJS</div>
+                        <div class="roomEl" data-id="4">AngularJS</div>
+                    </div>
+                </div>
+            </div>
+            <div id="chatWrap">
+                <div id="chatHeader">Everyone</div>
+                <div id="chatLog">
+                    <div class="anotherMsg">
+                        <span class="anotherName">Jo</span>
+                        <span class="msg">Hello, Nice to meet you.</span>
+                    </div>
+                    <div class="myMsg">
+                        <span class="msg">Nice to meet you, too.</span>
+                    </div>
+                </div>
+                <form id="chatForm">
+                    <input type="text" autocomplete="off" size="30" id="message" placeholder="메시지를 입력하세요">
+                    <input type="submit" value="보내기">
+                </form>
+            </div>
+            <div id="memberWrap">
+                <div id="memberList">
+                    <div id="memberHeader">사람</div>
+                    <div id="memberSelect">
+                      <div class="memberEl">test</div>
+                      <div class="memberEl">test</div>
+                      <div class="memberEl">test</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    -->
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="static/chat.js"></script>
+
+  </body>
+</html>
