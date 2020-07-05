@@ -20,11 +20,13 @@ import Auth from './hoc/auth'
 import FavoritePage from './components/views/FavoritePage/FavoritePage';
 
 import ChatPage from './components/views/ChatPage/ChatPage';
+import TodoPage from './components/views/TodoPage/TodoPage';
 
 function App() {
   return (
     <Router>
       <div>
+
         <Switch>
 
           <Route exact path="/" component={Auth(LandingPage, null)}/>
@@ -43,6 +45,7 @@ function App() {
           <Route exact path="/favorite" component={Auth(FavoritePage, null)}/>
 
           <Route exact path="/chat" component={Auth(ChatPage, true)}/>
+          <Route exact path="/todo" component={Auth(TodoPage, null)}/>
 
         </Switch>
       </div>

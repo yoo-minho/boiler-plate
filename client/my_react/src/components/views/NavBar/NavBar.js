@@ -86,6 +86,9 @@ function NavBar(props) {
                 <SubMenu key="sub3" icon={<VideoCameraOutlined />} title="채팅서비스">
                   <Menu.Item key="6" link="/chat" onClick={menuClick} title="홈">홈</Menu.Item>
                 </SubMenu>
+                <SubMenu key="sub4" icon={<VideoCameraOutlined />} title="투두서비스">
+                  <Menu.Item key="7" link="/todo" onClick={menuClick} title="홈">홈</Menu.Item>
+                </SubMenu>
               </Menu>
             </Sider>
           }

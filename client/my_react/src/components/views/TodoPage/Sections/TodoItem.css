@@ -1,0 +1,16 @@
+.todo-item {
+    margin: 0.5rem;
+    list-style: none;
+    padding: 0.2rem 0.5rem;
+    background: white;
+    border: 1px solid;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.done {
+    text-decoration: line-through;
+    font-style:italic;
+    background-color: mediumpurple;
+}
+
