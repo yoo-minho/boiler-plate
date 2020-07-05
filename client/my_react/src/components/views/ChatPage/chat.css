@@ -146,3 +146,10 @@
     display: flex;
     justify-content: space-around;
 }
+
+.notice {
+    text-align: center;
+    color: gray;
+    font-size: 13px;
+    background-color: lightblue;
+}
