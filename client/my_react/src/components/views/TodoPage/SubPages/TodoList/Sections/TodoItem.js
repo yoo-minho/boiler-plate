@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
+import { TodoContext } from '../../../Stores/TodoStore'
 import './TodoItem.css'
-import { TodoContext } from '../TodoPage'
 
 export default function TodoItem(props) {
 
-    const {changeTodoStatus} = useContext(TodoContext);
+    const {dispatch} = useContext(TodoContext);
 
     const toggleItem = (event) => {
         const id = event.target.dataset.id;
@@ -13,7 +13,7 @@ export default function TodoItem(props) {
         } else {
             event.target.classList.add('done')
         }
-        changeTodoStatus(id);
+        dispatch({type:'CHANGE_TODO_STATUS', payload:id});
     }
 
     return (
