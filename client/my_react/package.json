@@ -12,6 +12,8 @@
     "concurrently": "^5.2.0",
     "http-proxy-middleware": "^1.0.4",
     "moment": "2.24.0",
+    "pg": "^8.3.0",
+    "pg-promise": "^10.5.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.1",

@@ -2,11 +2,22 @@ import React, { useState, useEffect } from 'react'
 import '../ChatPage/chat.css'
 import NavBar from '../NavBar/NavBar'
 import socketIOClient from 'socket.io-client'
+import PGP from 'pg-promise'
 
 function ChatPage() {
 
     const [Socket, setSocket] = useState("");
     const [Message, setMessage] = useState("");
+
+    const db = PGP('postgres://dellosedb:dellosedb@localhost:5432/dellosedb');
+
+    db.one('select $1 as value', 123)
+    .then(function(data){
+        console.log('data',data.value);
+    })
+    .catch(function(error){
+        console.log('error',error);
+    })
 
     useEffect(() => {
 
