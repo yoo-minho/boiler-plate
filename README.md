@@ -13,7 +13,7 @@
 - rm -rf nohup.out
 - tail -1000f nohup.out+
 
-4. pg 이슈 윈도우파워셀 관리자모드에서 실행
+4. pg 이슈 윈도우파워셀 관리자모드에서 실행 (해당경로안에서)
 npm install --global --production windows-build-tools
 npm install --global node-gyp
 npm install -g pg-native

@@ -33,6 +33,8 @@ app.use('/api/comment', require('./routes/comment'));
 app.use('/api/like', require('./routes/like'));
 app.use('/api/favorite', require('./routes/favorite'));
 
+app.use('/api/postgres', require('./routes/postgres'));
+
 /*
 app.use('/uploads', express.static('uploads'));
 
