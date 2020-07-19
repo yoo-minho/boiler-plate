@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
-const useFetch = (callback, url) => {
+const useFetch = (callback) => {
 
     const [Loading, setLoading] = useState(false);
 
     const fetchInitialData = async () => {
         setLoading(true);
-        const response = await fetch(url);
-        const initialData = await response.json();
-        callback(initialData);
-        setLoading(false);
+
+        axios.post('/api/todo/getList')
+        .then(response => {
+            callback(response.rows);
+            setLoading(false);
+        })
     }
 
     useEffect(() => {

@@ -16,6 +16,7 @@ export const TodoReducer = (Todos, {type, payload}) => {
             })
     
         case "SET_INIT_DATA":
+            //console.log(payload);
             return payload;
     
         default:

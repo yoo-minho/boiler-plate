@@ -9,12 +9,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-
 app.use(cors({
     origin: 'http://ec2-15-164-100-98.ap-northeast-2.compute.amazonaws.com:3000',
     credentials : true,
 }))
-
 
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI, {
@@ -34,22 +32,7 @@ app.use('/api/like', require('./routes/like'));
 app.use('/api/favorite', require('./routes/favorite'));
 
 app.use('/api/postgres', require('./routes/postgres'));
-
-/*
-app.use('/uploads', express.static('uploads'));
-
-if(process.env.MODE_ENV === "production"){
-
-    app.use(express.static("client/build"));
-
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-    })
-
-}
-
-const port = process.env.PORT || 5000;
-*/
+app.use('/api/todo', require('./routes/todo-ps'));
 
 const port = 5000;
 

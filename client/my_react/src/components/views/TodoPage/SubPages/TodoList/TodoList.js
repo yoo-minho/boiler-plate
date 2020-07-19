@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import TodoItem from './Sections/TodoItem'
 import { TodoContext } from '../../Stores/TodoStore.js'
+import useFetch from '../../Actions/UseFetch'
 
 import './TodoList.css'
 
@@ -12,8 +13,7 @@ function TodoList() {
         dispatch({type:'SET_INTT_DATA', payload:initData})
     }
 
-    const Loading = false;
-    /*useFetch(setInitData, 'http://localhost:8080/todo')*/;
+    const Loading = false/*useFetch(setInitData)*/;
 
     let todoList = <div>로딩중...</div>
     if(!Loading) todoList = Todos.map( todo => 
