@@ -10,10 +10,16 @@ function TodoList() {
     const {Todos, dispatch} = useContext(TodoContext);
 
     const setInitData = (initData) => {
-        dispatch({type:'SET_INTT_DATA', payload:initData})
+        dispatch({type:'SET_INIT_DATA', payload:initData})
     }
 
-    const Loading = false/*useFetch(setInitData)*/;
+    console.log('aaaa36666');
+    console.log(Todos);
+
+    const Loading = /*false*/useFetch(setInitData);
+
+    console.log('aaaa7777');
+    console.log(Todos);
 
     let todoList = <div>로딩중...</div>
     if(!Loading) todoList = Todos.map( todo => 

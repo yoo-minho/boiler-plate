@@ -1,5 +1,11 @@
 export const TodoReducer = (Todos, {type, payload}) => {
-    switch (type) {
+    console.log('aaaa8888888');
+    console.log(Todos);
+    console.log(payload);
+    const tmpData = [...Todos, payload];
+    console.log(tmpData)
+
+    switch (type) { 
         case "ADD_TODO":
             return [...Todos, {title: payload ,id:Todos.length, status:'todo'}];
 
@@ -16,7 +22,6 @@ export const TodoReducer = (Todos, {type, payload}) => {
             })
     
         case "SET_INIT_DATA":
-            //console.log(payload);
             return payload;
     
         default:
