@@ -20,7 +20,7 @@ function TodoForm() {
 
         axios.post('/api/todo/add',variables)
         .then(response => {
-            console.log(response)
+            console.log(response.data.res.rows)
         })
 
         document.getElementById("todo-input").value = "";

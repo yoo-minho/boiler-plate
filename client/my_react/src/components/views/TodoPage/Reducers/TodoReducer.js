@@ -1,21 +1,16 @@
 export const TodoReducer = (Todos, {type, payload}) => {
-    console.log('aaaa8888888');
-    console.log(Todos);
-    console.log(payload);
-    const tmpData = [...Todos, payload];
-    console.log(tmpData)
 
     switch (type) { 
         case "ADD_TODO":
-            return [...Todos, {title: payload ,id:Todos.length, status:'todo'}];
+            return [{todo_contents: payload, id:Todos.length, todo_status:'N'}].concat(Todos);
 
         case "CHANGE_TODO_STATUS":
             return Todos.map(todo => {
-                if(todo.id === Number(payload)){
-                    if(todo.status === "done"){
-                        todo.status = "todo"
+                if(todo.todo_srno === Number(payload)){
+                    if(todo.todo_status === "Y"){
+                        todo.todo_status = "N"
                     } else {
-                        todo.status = "done"
+                        todo.todo_status = "Y"
                     }
                 }
                 return todo;

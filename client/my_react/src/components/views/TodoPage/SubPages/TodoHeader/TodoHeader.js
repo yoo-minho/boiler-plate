@@ -11,7 +11,7 @@ function TodoHeader() {
         <>
             <h1>투두애플리케이션</h1>
             <div className="countInfo">
-                해야할일 : {Todos.filter(v=>v.status==="todo").length}개가 있습니다.
+                해야할일 : {Todos.filter(v=>v.todo_status==="N").length}개가 있습니다.
             </div>
         </>
     )

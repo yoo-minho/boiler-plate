@@ -14,7 +14,7 @@ router.post('/add', (req, res2) => {
 
     client.query(sql, values, (err, res) => {
         client.end();
-        res2.status(200);
+        res2.status(200).json({success:true, res});
     });
 });
 
@@ -34,12 +34,15 @@ router.post('/changeTodoStatus', (req, res2) => {
     const client = new Client(config.postgresqlInfo);
     client.connect();
 
-    const sql = `UPDATE todo SET todo_status = (case when todo_status = 'N' then 'Y' else 'N' end) where todo_srno = $2`;
+    const sql = `UPDATE todo SET todo_status = (case when todo_status = 'N' then 'Y' else 'N' end) where todo_srno = $1 RETURNING *`;
     const values = [req.body.todoSrno];
+
+    console.log(sql);
+    console.log(values);
 
     client.query(sql, values, (err, res) => {
       client.end();
-      res2.status(200);
+      res2.status(200).json({success:true, res});
     });
 });
 

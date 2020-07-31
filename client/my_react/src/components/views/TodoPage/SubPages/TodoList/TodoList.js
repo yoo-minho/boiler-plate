@@ -13,17 +13,11 @@ function TodoList() {
         dispatch({type:'SET_INIT_DATA', payload:initData})
     }
 
-    console.log('aaaa36666');
-    console.log(Todos);
-
-    const Loading = /*false*/useFetch(setInitData);
-
-    console.log('aaaa7777');
-    console.log(Todos);
+    const Loading = useFetch(setInitData);
 
     let todoList = <div>로딩중...</div>
     if(!Loading) todoList = Todos.map( todo => 
-        <TodoItem key={todo.id} todo={todo}/>
+        <TodoItem todo={todo}/>
     )
     return (
         <ul className="todo-list">
